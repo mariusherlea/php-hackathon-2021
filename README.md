@@ -15,15 +15,12 @@ You have estimated it takes 4 weeks to build this solution. You have 2 days. Goo
 ### Data and Domain model
 In this section, please describe the main entities you managed to identify, the relationships between them and how you mapped them in the database.
 
-user	-> oneToMany-> programme->oneToOne->room;
-admin ->oneToMany -> programme
+
 
 ### Application architecture
 In this section, please provide a brief overview of the design of your application and highlight the main components and the interaction between them.
 
-User can register to many programme with the restriction that the programme have distinct room and a user can't be in same time in two rooms.
-Admin can create only one programme with only one room and only one time frame.
-Programme can have the number of user acceptep by the capacity of room reserved for.
+
 
 
 ###  Implementation
