@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use App\Http\Controllers\ProgrammeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,4 @@ Route::resource('/programme','ProgrammeController');
 Route::resource('/room','RoomController');
 Route::resource('/user','UserController');
 
+Route::get('/valid/{id}','ProgrammeController@index');

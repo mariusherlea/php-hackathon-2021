@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProgrameRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProgrammeController extends Controller
 {
@@ -11,9 +13,18 @@ class ProgrammeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        $result = DB::select('select * from programmes where start_time=?', [$id]);
+        foreach ($result as $post) {
+            return $post->name;
+        }
+
+        if(!$result){
+            $this->store();
+        }
+
 
     }
 
@@ -35,8 +46,7 @@ class ProgrammeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
+        return "e pe cale de intrare".$request;
 
     }
 
