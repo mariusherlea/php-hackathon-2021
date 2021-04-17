@@ -15,10 +15,8 @@ You have estimated it takes 4 weeks to build this solution. You have 2 days. Goo
 ### Data and Domain model
 In this section, please describe the main entities you managed to identify, the relationships between them and how you mapped them in the database.
 
-user	
-programme
-room
-admin
+user	-> oneToMany-> programme->oneToOne->room
+admin ->oneToMany -> programme
 
 ### Application architecture
 In this section, please provide a brief overview of the design of your application and highlight the main components and the interaction between them.
