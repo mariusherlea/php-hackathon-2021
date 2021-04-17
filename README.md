@@ -23,7 +23,7 @@ In this section, please provide a brief overview of the design of your applicati
 
 User can register to many programme with the restriction that the programme have distinct room and a user can't be in same time in two rooms.
 Admin can create only one programme with only one room and only one time frame.
-Programme can have de number of user acceptep by the capacity of room reserved for.
+Programme can have the number of user acceptep by the capacity of room reserved for.
 
 
 ###  Implementation
