@@ -1,5 +1,5 @@
 <?php
-
+namespace App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/programme','ProgrammeController');
+Route::resource('/room','RoomController');
+Route::resource('/user','UserController');
+
