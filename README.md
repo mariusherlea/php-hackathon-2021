@@ -33,14 +33,11 @@ For each of the following functionalities, please tick the box if you implemente
 
 [x] Brew coffee \
 [x] Create programme \
-Validation
-http://127.0.0.1:8000/valid/12:22:23/2021-04-18/13:22:23/2021-04-18/1
-Create
-http://127.0.0.1:8000/prgcreate/luptelibere/12:22:23/2021-04-18/13:22:23/2021-04-18/1
+http://127.0.0.1:8000/prgcreate/luptelibere/12:22:23/2021-04-18/13:22:23/2021-04-18/4
 [x] Delete programme \
-http://127.0.0.1:8000/prgdelete/3
-[ ] Book a programme 
-
+http://127.0.0.1:8000/prgdelete/1
+[x] Book a programme 
+http://127.0.0.1:8000/usercreate/1
 ##### Business rules
 Please highlight all the validations and mechanisms you identified as necessary in order to avoid inconsistent states and apply the business logic in your application.
 
