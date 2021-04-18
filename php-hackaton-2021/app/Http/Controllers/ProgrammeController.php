@@ -89,8 +89,9 @@ class ProgrammeController extends Controller
         //
     }
 
-    public function valid($start_time,$end_time,$day){
-        $result = DB::select('select * from programmes where start_time=:start_time and end_time=:end_time and day_of=:day',['start_time'=>$start_time,'end_time'=>$end_time, 'day'=>$day]);
+    public function valid($start_time,$end_time,$day,$room_number){
+        $result = DB::select('select * from programmes where start_time=:start_time and end_time=:end_time and day_of=:day and room_number=:room_number',
+            ['start_time'=>$start_time,'end_time'=>$end_time, 'day'=>$day, 'room_number'=>$room_number]);
         foreach ($result as $post) {
             return $post->name;
         }
