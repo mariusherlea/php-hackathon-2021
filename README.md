@@ -15,8 +15,8 @@ You have estimated it takes 4 weeks to build this solution. You have 2 days. Goo
 ### Data and Domain model
 In this section, please describe the main entities you managed to identify, the relationships between them and how you mapped them in the database.
 
-user	-> oneToMany-> programme->oneToOne->room;
-admin ->oneToMany -> programme
+user -> oneToMany-> programme;
+
 
 ### Application architecture
 In this section, please provide a brief overview of the design of your application and highlight the main components and the interaction between them.
@@ -26,16 +26,26 @@ Admin can create only one programme with only one room and only one time frame.
 Programme can have the number of user accepted by the capacity of room reserved for.
 
 ###  Implementation
+
+
 ##### Functionalities
 For each of the following functionalities, please tick the box if you implemented it and describe its input and output in your application:
 
 [x] Brew coffee \
-[ ] Create programme \
-[ ] Delete programme \
+[x] Create programme \
+Validation
+http://127.0.0.1:8000/valid/12:22:23/2021-04-18/13:22:23/2021-04-18/1
+Create
+http://127.0.0.1:8000/prgcreate/luptelibere/12:22:23/2021-04-18/13:22:23/2021-04-18/1
+[x] Delete programme \
+http://127.0.0.1:8000/prgdelete/3
 [ ] Book a programme 
 
 ##### Business rules
 Please highlight all the validations and mechanisms you identified as necessary in order to avoid inconsistent states and apply the business logic in your application.
+
+Create a validation that compare request param with already relevant date from programme table to satisfy the restriction that two programme can't be in same room in same time.
+
 
 ##### 3rd party libraries (if applicable)
 Please give a brief review of the 3rd party libraries you used and how/ why you've integrated them into your project.
@@ -44,8 +54,8 @@ Please give a brief review of the 3rd party libraries you used and how/ why you'
 Please fill in the following table with the technologies you used in order to work at your application. Feel free to add more rows if you want us to know about anything else you used.
 | Name | Choice |
 | ------ | ------ |
-| Operating system (OS) | e.g. Ubuntu 20.04 |
-| Database  | e.g. MySQL 8.0|
+| Operating system (OS) | Windows 10 |
+| Database  | MySQL 8.0|
 | Web server| e.g. Nginx |
 | PHP | e.g. 7.0 |
 | IDE | e.g. PhpStorm |
@@ -57,12 +67,36 @@ In this section, please list the steps and/ or tools you've used in order to tes
 In this section, please let us know what is your opinion about this experience and how we can improve it:
 
 1. Have you ever been involved in a similar experience? If so, how was this one different?
+No
 2. Do you think this type of selection process is suitable for you?
+
+Yes, it was very suitable for me.
+
 3. What's your opinion about the complexity of the requirements?
+
+For my level of experience it fit very well.
+
 4. What did you enjoy the most?
+
+I liked thinking of the algorithm that can solve the problem.
+
 5. What was the most challenging part of this anti hackathon?
+
+The most challenging thing was that I was sure that the requirements could be solved without knowing at the moment how.
+
 6. Do you think the time limit was suitable for the requirements?
+
+There was enough time to find the solution.
+
 7. Did you find the resources you were sent on your email useful?
+
+The resources received were useful because they were well structured.
+
 8. Is there anything you would like to improve to your current implementation?
+
+Yes.
+
 9. What would you change regarding this anti hackathon?
+
+Nothing, for me was ok.
 

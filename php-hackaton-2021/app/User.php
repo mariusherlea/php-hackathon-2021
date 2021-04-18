@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'cnp', 'password',
+        'name', 'cnp',
     ];
 
     /**
@@ -37,7 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function programme(){
-        return $this->hasMany(Programme::class);
+    public function programmes()
+    {
+        return $this->belongsTo(Programme::class);
     }
 }

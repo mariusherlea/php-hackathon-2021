@@ -1,5 +1,7 @@
 <?php
+
 namespace App;
+
 use App\Http\Controllers\ProgrammeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +20,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/programme','ProgrammeController');
-Route::resource('/room','RoomController');
-Route::resource('/user','UserController');
+Route::resource('/programme', 'ProgrammeController');
 
-Route::get('/valid/{start_time}/{end_time}/{day}/{room_number}','ProgrammeController@valid');
+
+Route::get('/valid/{start_time}/{start_day}/{end_time}/{end_day}/{room_number}', 'ProgrammeController@valid');
+
+Route::get('/prgcreate/{name}/{start_time}/{start_day}/{end_time}/{end_day}/{room_number}', function ($name, $start_time, $start_day, $end_time, $end_day, $room_number) {
+
+    Programme::create(['name' => $name, 'start_time' => $start_time, 'start_day' => $start_day,
+        'end_time' => $end_time, 'end_day' => $end_day, 'room_number' => $room_number, 'admin_by' => 'marius']);
+
+
+});
+Route::get('/usercreate',function (){
+    $program=Programme::findOrFail(1);
+    $user=new User(['name'=>'ion','cnp'=>'345']);
+    $program->users()->save($user);
+});
+
+Route::get('/prgdelete/{id}', function ($id){
+    $program = Programme::where('id', $id)->first(); // File::find($id)
+
+    if($program) {
+
+        return $program->delete();
+    }
+});

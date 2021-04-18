@@ -89,15 +89,15 @@ class ProgrammeController extends Controller
         //
     }
 
-    public function valid($start_time,$end_time,$day,$room_number){
-        $result = DB::select('select * from programmes where start_time=:start_time and end_time=:end_time and day_of=:day and room_number=:room_number',
-            ['start_time'=>$start_time,'end_time'=>$end_time, 'day'=>$day, 'room_number'=>$room_number]);
+    public function valid($start_time,$start_day,$end_time,$end_day,$room_number){
+        $result = DB::select('select * from programmes where start_time=:start_time and start_day=:start_day and end_time=:end_time and end_day=:end_day and room_number=:room_number',
+            ['start_time'=>$start_time,'start_day'=>$start_day,'end_time'=>$end_time, 'end_day'=>$end_day, 'room_number'=>$room_number]);
         foreach ($result as $post) {
-            return $post->name;
+            return "It cannot duplicate ".$post->name;
         }
 
         if(!$result){
-            return "not exist";
+            return "Your good to go in book program";
         }
     }
 

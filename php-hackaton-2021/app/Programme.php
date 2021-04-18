@@ -6,11 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Programme extends Model
 {
-public function rooms(){
-    return $this->hasOne(Room::class);
-}
+
+    protected $fillable=[
+        'name',
+        'start_time',
+        'start_day',
+        'end_time',
+        'end_day',
+        'room_number',
+        'admin_by',
+
+    ];
 
 public function users(){
-    return $this->belongsTo(User::class);
+    return $this->hasMany(User::class);
 }
+
+
 }

@@ -16,10 +16,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('cnp')->unique();
-            $table->string('password');
+            $table->integer('cnp');
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('programme_id');
         });
     }
 

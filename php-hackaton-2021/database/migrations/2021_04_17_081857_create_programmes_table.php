@@ -17,10 +17,11 @@ class CreateProgrammesTable extends Migration
             $table->id()->unique();
             $table->string('name');
             $table->time('start_time');
+            $table->date('start_day');
             $table->time('end_time');
-            $table->date('day_of');
+            $table->date('end_day');
             $table->integer('room_number');
-            $table->integer('admin_by');
+            $table->string('admin_by');
             $table->timestamps();
         });
     }
