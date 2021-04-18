@@ -16,14 +16,7 @@ class ProgrammeController extends Controller
     public function index($id)
     {
         //
-        $result = DB::select('select * from programmes where start_time=?', [$id]);
-        foreach ($result as $post) {
-            return $post->name;
-        }
 
-        if(!$result){
-            $this->store();
-        }
 
 
     }
@@ -46,7 +39,7 @@ class ProgrammeController extends Controller
      */
     public function store(Request $request)
     {
-        return "e pe cale de intrare".$request;
+        return $request;
 
     }
 
@@ -94,6 +87,17 @@ class ProgrammeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function valid($start_time,$end_time,$day){
+        $result = DB::select('select * from programmes where start_time=:start_time and end_time=:end_time and day_of=:day',['start_time'=>$start_time,'end_time'=>$end_time, 'day'=>$day]);
+        foreach ($result as $post) {
+            return $post->name;
+        }
+
+        if(!$result){
+            return "not exist";
+        }
     }
 
 

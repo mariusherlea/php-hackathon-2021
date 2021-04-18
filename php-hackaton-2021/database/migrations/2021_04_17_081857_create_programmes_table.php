@@ -14,12 +14,13 @@ class CreateProgrammesTable extends Migration
     public function up()
     {
         Schema::create('programmes', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
             $table->string('name');
             $table->time('start_time');
             $table->time('end_time');
+            $table->date('day_of');
             $table->integer('room_number')->unique();
-            $table->integer('admin_by')->unique();
+            $table->integer('admin_by');
             $table->timestamps();
         });
     }
