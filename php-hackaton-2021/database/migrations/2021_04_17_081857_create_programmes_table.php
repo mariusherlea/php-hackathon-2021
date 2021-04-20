@@ -20,7 +20,7 @@ class CreateProgrammesTable extends Migration
             $table->date('start_day');
             $table->time('end_time');
             $table->date('end_day');
-            $table->integer('room_number');
+            $table->integer('seats_remaining');
             $table->string('admin_by');
             $table->timestamps();
         });

@@ -24,13 +24,13 @@ Route::get('/', function () {
 Route::resource('/programme', 'ProgrammeController');
 
 
-Route::get('/valid/{start_time}/{start_day}/{end_time}/{end_day}/{room_number}', 'ProgrammeController@valid');
+Route::get('/valid/{start_time}/{start_day}/{end_time}/{end_day}/{seats_remaining}', 'ProgrammeController@valid');
 
-Route::get('/prgcreate/{name}/{start_time}/{start_day}/{end_time}/{end_day}/{room_number}', function ($name, $start_time, $start_day, $end_time, $end_day, $room_number) {
+Route::get('/prgcreate/{name}/{start_time}/{start_day}/{end_time}/{end_day}/{seats_remaining}', function ($name, $start_time, $start_day, $end_time, $end_day, $seats_remaining) {
 
 
-    $result = DB::select('select * from programmes where start_time=:start_time and start_day=:start_day and end_time=:end_time and end_day=:end_day and room_number=:room_number',
-        ['start_time' => $start_time, 'start_day' => $start_day, 'end_time' => $end_time, 'end_day' => $end_day, 'room_number' => $room_number]);
+    $result = DB::select('select * from programmes where start_time=:start_time and start_day=:start_day and end_time=:end_time and end_day=:end_day and seats_remaining=:seats_remaining',
+        ['start_time' => $start_time, 'start_day' => $start_day, 'end_time' => $end_time, 'end_day' => $end_day, 'seats_remaining' => $seats_remaining]);
     foreach ($result as $post) {
         return "Exist a duplicate in db: " . $post->name;
     }
@@ -38,7 +38,7 @@ Route::get('/prgcreate/{name}/{start_time}/{start_day}/{end_time}/{end_day}/{roo
 
     if (!$result) {
         Programme::create(['name' => $name, 'start_time' => $start_time, 'start_day' => $start_day,
-            'end_time' => $end_time, 'end_day' => $end_day, 'room_number' => $room_number, 'admin_by' => 'marius']);
+            'end_time' => $end_time, 'end_day' => $end_day, 'seats_remaining' => $seats_remaining, 'admin_by' => 'marius']);
     }
 
 
@@ -47,8 +47,18 @@ Route::get('/prgcreate/{name}/{start_time}/{start_day}/{end_time}/{end_day}/{roo
 });
 Route::get('/usercreate/{id}',function ($id){
     $program=Programme::findOrFail($id);
-    $user=new User();
+$seat=$program->seats_remaining;
+if($seat>0) {
+    $seat = $seat - 1;
+//  $program->seats_remaining->create($seat);
+    Programme::where('id', $id)->update(['seats_remaining' => $seat]);
+
+    $user = new User();
     $program->users()->save($user);
+}
+else{
+    echo 'full';
+}
 });
 
 Route::get('/prgdelete/{id}', function ($id){

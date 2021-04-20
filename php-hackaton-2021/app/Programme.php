@@ -15,6 +15,7 @@ class Programme extends Model
         'end_day',
         'room_number',
         'admin_by',
+        'seats_remaining'
 
     ];
 
